@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module main</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>main</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/orlandomarin/NetBeansProjects/LoanCalculatorPython/main.py">/Users/orlandomarin/NetBeansProjects/LoanCalculatorPython/main.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;program&nbsp;helps&nbsp;users&nbsp;calculate&nbsp;how&nbsp;many&nbsp;months&nbsp;it&nbsp;will&nbsp;take&nbsp;to&nbsp;pay&nbsp;off&nbsp;a&nbsp;<br>
+debt&nbsp;and&nbsp;the&nbsp;total&nbsp;amount&nbsp;of&nbsp;interest&nbsp;paid&nbsp;over&nbsp;the&nbsp;loan&nbsp;period.&nbsp;<br>
+&nbsp;<br>
+The&nbsp;user&nbsp;inputs&nbsp;their&nbsp;name,&nbsp;the&nbsp;item&nbsp;they&nbsp;are&nbsp;paying&nbsp;off,&nbsp;the&nbsp;principal&nbsp;<br>
+balance,&nbsp;the&nbsp;annual&nbsp;interest&nbsp;rate,&nbsp;and&nbsp;their&nbsp;monthly&nbsp;payment&nbsp;amount.&nbsp;The&nbsp;<br>
+program&nbsp;then&nbsp;calculates&nbsp;and&nbsp;displays&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;months&nbsp;<br>
+(or&nbsp;years&nbsp;and&nbsp;months)&nbsp;required&nbsp;to&nbsp;pay&nbsp;off&nbsp;the&nbsp;debt,&nbsp;along&nbsp;with&nbsp;the&nbsp;total&nbsp;<br>
+interest&nbsp;paid&nbsp;over&nbsp;that&nbsp;period.<br>
+&nbsp;<br>
+The&nbsp;calculations&nbsp;account&nbsp;for:<br>
+1.&nbsp;Monthly&nbsp;interest&nbsp;charges&nbsp;based&nbsp;on&nbsp;the&nbsp;annual&nbsp;interest&nbsp;rate&nbsp;divided&nbsp;by&nbsp;12.<br>
+2.&nbsp;The&nbsp;amount&nbsp;remaining&nbsp;after&nbsp;paying&nbsp;interest,&nbsp;which&nbsp;is&nbsp;applied&nbsp;to&nbsp;the&nbsp;<br>
+principal.<br>
+3.&nbsp;The&nbsp;program&nbsp;stops&nbsp;when&nbsp;the&nbsp;remaining&nbsp;debt&nbsp;reaches&nbsp;zero.<br>
+&nbsp;<br>
+It&nbsp;uses&nbsp;global&nbsp;variables&nbsp;to&nbsp;store&nbsp;user&nbsp;inputs&nbsp;and&nbsp;calculated&nbsp;results,&nbsp;and&nbsp;<br>
+prints&nbsp;a&nbsp;final&nbsp;summary&nbsp;showing&nbsp;the&nbsp;total&nbsp;time&nbsp;and&nbsp;interest&nbsp;paid.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="pydoc.html">pydoc</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-calculateResults"><strong>calculateResults</strong></a>()</dt><dd><tt>This&nbsp;function&nbsp;calculates&nbsp;the&nbsp;number&nbsp;of&nbsp;months&nbsp;required&nbsp;to&nbsp;pay&nbsp;off<br>
+the&nbsp;debt&nbsp;and&nbsp;the&nbsp;total&nbsp;amount&nbsp;of&nbsp;interest&nbsp;paid&nbsp;over&nbsp;the&nbsp;loan&nbsp;period.<br>
+&nbsp;<br>
+It&nbsp;uses&nbsp;a&nbsp;loop&nbsp;to&nbsp;simulate&nbsp;each&nbsp;month's&nbsp;repayment:<br>
+-&nbsp;Calculates&nbsp;the&nbsp;monthly&nbsp;interest<br>
+-&nbsp;Deducts&nbsp;the&nbsp;remaining&nbsp;balance&nbsp;by&nbsp;the&nbsp;payment&nbsp;amount&nbsp;minus&nbsp;the&nbsp;interest<br>
+-&nbsp;Accumulates&nbsp;interest&nbsp;payments&nbsp;and&nbsp;increments&nbsp;the&nbsp;number&nbsp;of&nbsp;months<br>
+&nbsp;<br>
+The&nbsp;results&nbsp;are&nbsp;stored&nbsp;in&nbsp;global&nbsp;variables&nbsp;'months'&nbsp;and&nbsp;'totalInterestPaid'.</tt></dd></dl>
+ <dl><dt><a name="-gatherInfo"><strong>gatherInfo</strong></a>()</dt><dd><tt>This&nbsp;function&nbsp;gathers&nbsp;all&nbsp;necessary&nbsp;inputs&nbsp;from&nbsp;the&nbsp;user,&nbsp;including:<br>
+-&nbsp;The&nbsp;user's&nbsp;first&nbsp;name<br>
+-&nbsp;The&nbsp;item&nbsp;(debt)&nbsp;they&nbsp;need&nbsp;to&nbsp;pay&nbsp;off<br>
+-&nbsp;The&nbsp;principal&nbsp;balance&nbsp;(initial&nbsp;loan&nbsp;amount)<br>
+-&nbsp;The&nbsp;annual&nbsp;interest&nbsp;rate&nbsp;(converted&nbsp;to&nbsp;a&nbsp;monthly&nbsp;interest&nbsp;rate)<br>
+-&nbsp;The&nbsp;user's&nbsp;monthly&nbsp;payment&nbsp;amount<br>
+&nbsp;<br>
+The&nbsp;input&nbsp;values&nbsp;are&nbsp;assigned&nbsp;to&nbsp;global&nbsp;variables&nbsp;for&nbsp;use&nbsp;in&nbsp;the<br>
+calculation&nbsp;and&nbsp;result&nbsp;printing&nbsp;functions.</tt></dd></dl>
+ <dl><dt><a name="-main"><strong>main</strong></a>()</dt><dd><tt>The&nbsp;main&nbsp;function&nbsp;orchestrates&nbsp;the&nbsp;flow&nbsp;of&nbsp;the&nbsp;program.<br>
+It&nbsp;first&nbsp;gathers&nbsp;user&nbsp;input&nbsp;through&nbsp;<a href="#-gatherInfo">gatherInfo</a>(),&nbsp;then<br>
+calculates&nbsp;the&nbsp;loan&nbsp;repayment&nbsp;details&nbsp;using&nbsp;<a href="#-calculateResults">calculateResults</a>(),<br>
+and&nbsp;finally&nbsp;prints&nbsp;the&nbsp;results&nbsp;through&nbsp;<a href="#-printResults">printResults</a>().</tt></dd></dl>
+ <dl><dt><a name="-printResults"><strong>printResults</strong></a>()</dt><dd><tt>This&nbsp;function&nbsp;prints&nbsp;the&nbsp;final&nbsp;results&nbsp;to&nbsp;the&nbsp;user,&nbsp;showing:<br>
+-&nbsp;The&nbsp;number&nbsp;of&nbsp;months&nbsp;(or&nbsp;years&nbsp;and&nbsp;months)&nbsp;needed&nbsp;to&nbsp;pay&nbsp;off&nbsp;the&nbsp;debt<br>
+-&nbsp;The&nbsp;total&nbsp;interest&nbsp;paid&nbsp;over&nbsp;the&nbsp;loan&nbsp;period<br>
+&nbsp;<br>
+The&nbsp;results&nbsp;are&nbsp;customized&nbsp;based&nbsp;on&nbsp;whether&nbsp;the&nbsp;repayment&nbsp;period&nbsp;exceeds<br>
+12&nbsp;months&nbsp;(displayed&nbsp;in&nbsp;years&nbsp;and&nbsp;months).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>firstName</strong> = ''<br>
+<strong>interestRateMonthly</strong> = 0<br>
+<strong>item</strong> = ''<br>
+<strong>monthlyTotalPayment</strong> = 0<br>
+<strong>months</strong> = 0<br>
+<strong>principalBalance</strong> = 0<br>
+<strong>totalInterestPaid</strong> = 0</td></tr></table>
+</body></html>

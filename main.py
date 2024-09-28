@@ -1,62 +1,168 @@
-''''
-You have just purchased a stereo system that cost $1000 on 
-the following credit plan: no down payment, an interest rate of 18% per year 
-(and hence 1.5% per month), and monthly payments of $50. The monthly payment of 
-$50 is used to pay the interest, and whatever is left is used to pay part of 
-the remaining debt. Hence, the first month you pay 1.5% of $1000 in interest. 
-That is $15 in interest. The remaining $35 is deducted from your debt, which 
-leaves you with a debt of $965.00. The next month you pay interest of 1.5% of 
-$965.00, which is $14.48. Hence, you can deduct $35.52 (which is $50–$14.48) 
-from the amount you owe. Write a program that will tell you how many months it 
-will take you to pay off the loan, as well as the total amount of interest paid 
-over the life of the loan. Use a loop to calculate the amount of interest and 
-the size of the debt after each month. (Your final program need not output the 
-monthly amount of interest paid and remaining debt, but you may want to write a 
-preliminary version of the program that does output these values.) Use a 
-variable to count the number of loop iterations and hence the number of months 
-until the debt is zero. You may want to use other variables as well. The last 
-payment may be less than $50 if the debt is small, but do not forget the 
-interest. If you owe $50, then your monthly payment of $50 will not pay off 
-your debt, although it will come close. One month’s interest on $50 is only 
-75 cents.
-'''''
+"""
+This program helps users calculate how many months it will take to pay off a 
+debt and the total amount of interest paid over the loan period. 
 
-# VARIABLES
-# initialize the Principal Balance to $1000
-stereoSystemPrincipalBalance = 1000
+The user inputs their name, the item they are paying off, the principal 
+balance, the annual interest rate, and their monthly payment amount. The 
+program then calculates and displays the total number of months 
+(or years and months) required to pay off the debt, along with the total 
+interest paid over that period.
 
-# create variables for the monthly interest rate and total payment
-interestRateMonthly = 0.015
-monthlyTotalPayment = 50
+The calculations account for:
+1. Monthly interest charges based on the annual interest rate divided by 12.
+2. The amount remaining after paying interest, which is applied to the 
+principal.
+3. The program stops when the remaining debt reaches zero.
 
-# initialize the number of months to pay off the loan and the total amount of
-# interest paid to 0
+It uses global variables to store user inputs and calculated results, and 
+prints a final summary showing the total time and interest paid.
+"""
+
+import pydoc
+
+# Global Variables
+principalBalance = 0
+interestRateMonthly = 0
+monthlyTotalPayment = 0
 months = 0
-totalInterestPaid = 0 
+totalInterestPaid = 0
+firstName = "" 
+item = ""
 
-# this while loop calculates how many months it will take to pay off the balance
-# of the stereo and how much interest will have been paid in total after the
-# last payment
-while stereoSystemPrincipalBalance > 0:
-    # split up the total payment into 2 parts: interest and principal
-    # calculate the monthly interest payment and principal payment
+
+def main():
+    """
+    The main function orchestrates the flow of the program.
+    It first gathers user input through gatherInfo(), then
+    calculates the loan repayment details using calculateResults(),
+    and finally prints the results through printResults().
+    """
+    gatherInfo()
     
-    # interest is paid first
-    monthlyInterestPayment = stereoSystemPrincipalBalance * interestRateMonthly
+    calculateResults()
     
-    # based off the interest paid, the remainder of the $50 will go towards
-    # the principal
-    monthlyPrincipalPayment = monthlyTotalPayment - monthlyInterestPayment
+    printResults()
+
+
+def gatherInfo():
+    """
+    This function gathers all necessary inputs from the user, including:
+    - The user's first name
+    - The item (debt) they need to pay off
+    - The principal balance (initial loan amount)
+    - The annual interest rate (converted to a monthly interest rate)
+    - The user's monthly payment amount
     
-    # each time the loop runs, add another month to the total
-    months += 1
+    The input values are assigned to global variables for use in the
+    calculation and result printing functions.
+    """
+    # use global variables
+    global firstName, item, principalBalance, interestRateMonthly, monthlyTotalPayment
     
-    # adjust the balance for the next time the loop runs
-    stereoSystemPrincipalBalance -= monthlyPrincipalPayment
+    # Ask the user what their name is
+    firstName = input("What's your first name? ")
     
-    # calculate the total interest paid
-    totalInterestPaid += monthlyInterestPayment
+    # ask the user what item they need to pay off
+    item = input("What is a debt that you need to pay off? ")
+
+    # print starting message
+    print(f"Hi, {firstName}! Let's help you pay off your {item}. I'm going to ask you 3 questions. ")
+
+    # ask the user what their principal balance is
+    principalBalance = float(input("Question 1. What is your principal balance? "))
+
+    # ask the user what their annual interest rate is
+    interestRateAnnually = float(input("Question 2. What is your annual interest rate? "))
+
+    # if the user inputs an annual interest rate greater than 1, divide their
+    # answer by 100 to convert to a decimal equivalent
+    if interestRateAnnually > 1:
+        interestRateAnnually = interestRateAnnually / 100
+
+    # calculate the monthly interest rate by dividing the annual interest rate
+    # by 12
+    interestRateMonthly = interestRateAnnually / 12
+
+    # ask the user what their monthly payment is
+    monthlyTotalPayment = float(input("Question 3. What is your monthly payment? "))
     
-# print the results
-print(f"It will take {months} months to pay off the balance!")
-print(f"The total amount of interest paid will be ${totalInterestPaid:.2f}.")
+    return firstName, item, principalBalance, interestRateMonthly, monthlyTotalPayment
+
+
+def calculateResults():
+    """
+    This function calculates the number of months required to pay off
+    the debt and the total amount of interest paid over the loan period.
+    
+    It uses a loop to simulate each month's repayment:
+    - Calculates the monthly interest
+    - Deducts the remaining balance by the payment amount minus the interest
+    - Accumulates interest payments and increments the number of months
+    
+    The results are stored in global variables 'months' and 'totalInterestPaid'.
+    """
+    # use global variables
+    global principalBalance, interestRateMonthly, monthlyTotalPayment, months, totalInterestPaid
+    
+    # initialize the number of months to pay off the loan and the total amount of
+    # interest paid to 0
+    months = 0
+    totalInterestPaid = 0
+    
+    # this while loop calculates how many months it will take to pay off the 
+    # debt balance and how much interest will have been paid in total after the
+    # last payment
+    while principalBalance > 0:
+        # split up the total payment into 2 parts: interest and principal
+        # calculate the monthly interest payment and principal payment
+    
+        # interest is paid first
+        monthlyInterestPayment = principalBalance * interestRateMonthly
+    
+        # based off the interest paid, the remainder of the $50 will go towards
+        # the principal
+        monthlyPrincipalPayment = monthlyTotalPayment - monthlyInterestPayment
+    
+        # each time the loop runs, add another month to the total
+        months += 1
+    
+        # adjust the balance for the next time the loop runs
+        principalBalance -= monthlyPrincipalPayment
+    
+        # calculate the total interest paid
+        totalInterestPaid += monthlyInterestPayment
+
+# print the results based on whether or not it will take over a year to pay
+# off the loan
+
+
+def printResults():
+    """
+    This function prints the final results to the user, showing:
+    - The number of months (or years and months) needed to pay off the debt
+    - The total interest paid over the loan period
+    
+    The results are customized based on whether the repayment period exceeds
+    12 months (displayed in years and months).
+    """
+    if months > 12:
+        years = int(months / 12)
+        remainingMonths = months % 12
+    # print the results
+        print(f"It will take {years} years and {remainingMonths} months to pay off your {item}, {firstName}!")
+        print(f"The total amount of interest paid in that time will be ${totalInterestPaid:.2f}.")
+    else:
+        print(f"It will take {months} months to pay off your {item}, {firstName}!")
+        print(f"The total amount of interest paid in that time will be ${totalInterestPaid:.2f}.")
+        
+
+if __name__ == "__main__":
+
+    main()
+    
+    pydoc.writedoc("main")
+
+
+
+
+
